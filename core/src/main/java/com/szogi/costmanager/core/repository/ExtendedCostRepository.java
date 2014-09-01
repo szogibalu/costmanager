@@ -22,7 +22,7 @@ public class ExtendedCostRepository {
     public void createCollection() {
         if (!operations.collectionExists(Cost.class)) {
             LOGGER.info("Create collection: {}", COLLECTION_NAME);
-            operations.createCollection(COLLECTION_NAME);
+            operations.createCollection(Cost.class);
         } else {
             LOGGER.warn("Collection already exists: {}", COLLECTION_NAME);
         }
