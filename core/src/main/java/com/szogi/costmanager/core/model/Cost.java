@@ -29,7 +29,10 @@ public class Cost implements Serializable {
 
     private String currency;
 
-    Cost(String description, Date date, BigDecimal value, String currency) {
+    public Cost() {
+    }
+
+    private Cost(String description, Date date, BigDecimal value, String currency) {
         this.description = description;
         this.date = date;
         this.value = value;

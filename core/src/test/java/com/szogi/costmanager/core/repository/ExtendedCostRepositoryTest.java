@@ -15,10 +15,10 @@ import static org.mockito.Mockito.*;
 @RunWith(MockitoJUnitRunner.class)
 public class ExtendedCostRepositoryTest {
 
-    private ExtendedCostRepository target;
+    ExtendedCostRepository target;
 
     @Mock
-    private MongoOperations mockedOperations;
+    MongoOperations mockedOperations;
 
     @Before
     public void setUp() throws Exception {
