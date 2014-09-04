@@ -5,7 +5,7 @@ import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;
 
-public class RestConfiguration extends ResourceConfig {
+class RestConfiguration extends ResourceConfig {
 
     public RestConfiguration() {
         register(RequestContextFilter.class);

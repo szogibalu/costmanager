@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @Configuration
 @EnableMongoRepositories(basePackages = "com.szogi.costmanager.core.repository")
-@PropertySource("classpath:config/application.properties")
+@PropertySource("${cm.config.file}")
 @Import(value = MongoConfiguration.class)
 public class ApplicationConfiguration {
 

@@ -1,7 +1,7 @@
 package com.szogi.costmanager.core.service;
 
 import com.szogi.costmanager.core.model.CostList;
-import com.szogi.costmanager.core.test.util.RestIntegrationTest;
+import com.szogi.costmanager.core.test.RestIntegrationTest;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 

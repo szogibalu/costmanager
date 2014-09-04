@@ -5,7 +5,6 @@ import com.szogi.costmanager.core.model.Cost;
 import com.szogi.costmanager.core.model.CostList;
 import com.szogi.costmanager.core.repository.CostRepository;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -20,7 +19,6 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
-@Ignore
 @RunWith(MockitoJUnitRunner.class)
 public class CostServiceTest {
 

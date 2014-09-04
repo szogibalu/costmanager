@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.test.util;
+package com.szogi.costmanager.core.test;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -19,10 +19,10 @@ import java.io.IOException;
 import static com.google.common.base.Throwables.propagate;
 import static javax.ws.rs.client.ClientBuilder.newClient;
 
-public class RestIntegrationTest {
+public abstract class RestIntegrationTest {
 
     protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    protected static final String REST_SERVICES_URL = "http://localhost:8080/cost-manager-services/rest";
+    private static final String REST_SERVICES_URL = "http://localhost:8080/cost-manager-services/rest";
     private final HttpClient client = HttpClientBuilder.create().build();
 
     protected static String getEntityContent(final HttpResponse response) {
@@ -33,7 +33,7 @@ public class RestIntegrationTest {
         }
     }
 
-    protected static Client getJerseyClient() {
+    private static Client getJerseyClient() {
         final ClientConfig clientConfig = new ClientConfig();
         clientConfig.register(JacksonFeature.class);
         return newClient(clientConfig);

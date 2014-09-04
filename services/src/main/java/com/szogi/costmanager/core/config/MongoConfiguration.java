@@ -14,12 +14,12 @@ import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 
 @Configuration
-public class MongoConfiguration extends AbstractMongoConfiguration {
+class MongoConfiguration extends AbstractMongoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfiguration.class);
 
     @Autowired
-    Environment environment;
+    private Environment environment;
 
     @Override
     public String getDatabaseName() {
