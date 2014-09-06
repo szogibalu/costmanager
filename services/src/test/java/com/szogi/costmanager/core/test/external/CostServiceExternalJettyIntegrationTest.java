@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.service;
+package com.szogi.costmanager.core.test.external;
 
 import com.szogi.costmanager.core.model.CostList;
 import com.szogi.costmanager.core.test.RestIntegrationTest;
@@ -14,7 +14,7 @@ import static javax.ws.rs.client.Entity.entity;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class CostServiceExternalIntegrationTest extends RestIntegrationTest {
+public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest {
 
     private static final String COST_SERVICE_URL = "/json/costservice";
 

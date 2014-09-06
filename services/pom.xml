@@ -120,6 +120,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
+        <dependency>
+            <groupId>de.flapdoodle.embed</groupId>
+            <artifactId>de.flapdoodle.embed.mongo</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -132,8 +137,8 @@
                 <configuration>
                     <systemProperties>
                         <systemProperty>
-                            <name>cm.config.file</name>
-                            <value>file:${basedir}/target/test-classes/config/application.properties</value>
+                            <name>cm.config.dir</name>
+                            <value>${basedir}/target/test-classes/external-test-config</value>
                         </systemProperty>
                     </systemProperties>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
@@ -171,7 +176,7 @@
                 <version>2.17</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*ExternalIntegrationTest*.java</exclude>
+                        <exclude>**/*ExternalJettyIntegrationTest.java</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -186,7 +191,7 @@
                                 <exclude>none</exclude>
                             </excludes>
                             <includes>
-                                <include>**/*ExternalIntegrationTest*.java</include>
+                                <include>**/*ExternalJettyIntegrationTest.java</include>
                             </includes>
                         </configuration>
                     </execution>

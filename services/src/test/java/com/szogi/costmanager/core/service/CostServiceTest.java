@@ -22,10 +22,9 @@ import static org.mockito.Mockito.verify;
 @RunWith(MockitoJUnitRunner.class)
 public class CostServiceTest {
 
-    CostService target;
-
     @Mock
     CostRepository mockedCostRepository;
+    private CostService target;
 
     @Before
     public void setUp() throws Exception {

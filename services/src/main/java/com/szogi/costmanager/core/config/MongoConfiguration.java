@@ -12,8 +12,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.env.Environment;
 import org.springframework.data.authentication.UserCredentials;
 import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
+import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
+@EnableMongoRepositories(basePackages = "com.szogi.costmanager.core.repository")
 class MongoConfiguration extends AbstractMongoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfiguration.class);

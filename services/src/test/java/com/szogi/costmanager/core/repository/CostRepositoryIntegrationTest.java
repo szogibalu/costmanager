@@ -6,16 +6,13 @@ import com.szogi.costmanager.core.test.SpringIntegrationTest;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static com.szogi.costmanager.core.test.util.TestObjectFactory.testCost;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
-@RunWith(SpringJUnit4ClassRunner.class)
 public class CostRepositoryIntegrationTest extends SpringIntegrationTest {
 
     @Autowired
