@@ -37,6 +37,15 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Cost Manager dependencies -->
+            <dependency>
+                <groupId>com.szogi</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <!-- Utils -->
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
@@ -53,7 +62,7 @@
                 <version>${apache.commons.io}</version>
             </dependency>
 
-            <!-- Test-->
+            <!-- Test -->
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>

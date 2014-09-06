@@ -13,15 +13,15 @@ import static java.lang.Boolean.TRUE;
 import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ExtendedCostRepositoryTest {
+public class CostExtendedRepositoryTest {
 
     @Mock
     MongoOperations mockedOperations;
-    private ExtendedCostRepository target;
+    private CostExtendedRepository target;
 
     @Before
     public void setUp() throws Exception {
-        target = new ExtendedCostRepository(mockedOperations);
+        target = new CostExtendedRepository(mockedOperations);
     }
 
     @Test

@@ -3,7 +3,7 @@ package com.szogi.costmanager.services.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.szogi.costmanager.services.repository.ExtendedCostRepository;
+import com.szogi.costmanager.services.repository.CostExtendedRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,7 +44,7 @@ class MongoConfiguration extends AbstractMongoConfiguration {
     }
 
     @Bean
-    public ExtendedCostRepository extendedCostRepository() throws Exception {
-        return new ExtendedCostRepository(mongoTemplate());
+    public CostExtendedRepository extendedCostRepository() throws Exception {
+        return new CostExtendedRepository(mongoTemplate());
     }
 }

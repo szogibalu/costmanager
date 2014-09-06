@@ -19,7 +19,7 @@ public class CostRepositoryIntegrationTest extends SpringIntegrationTest {
     private CostRepository costRepository;
 
     @Autowired
-    private ExtendedCostRepository extendedCostRepository;
+    private CostExtendedRepository costExtendedRepository;
 
     @Test
     public void save() {
@@ -30,13 +30,12 @@ public class CostRepositoryIntegrationTest extends SpringIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        extendedCostRepository.createCollection();
+        costExtendedRepository.createCollection();
     }
 
     @Before
     @After
     public void clear() throws Exception {
-        extendedCostRepository.dropCollection();
-
+        costExtendedRepository.dropCollection();
     }
 }
