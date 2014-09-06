@@ -41,7 +41,7 @@ public class CostServiceTest {
     @Test
     public void loadAll() {
         Mockito.when(mockedCostRepository.findAll()).thenReturn(Lists.<Cost>newArrayList());
-        CostList costList = target.loadCosts();
+        CostList costList = target.loadAll();
         assertThat(costList, is(notNullValue()));
 
     }

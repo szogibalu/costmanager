@@ -32,7 +32,7 @@ public class CostService {
     @GET
     @Path("/loadAll")
     @Produces(MediaType.APPLICATION_JSON)
-    public CostList loadCosts() {
+    public CostList loadAll() {
         return new CostList(costRepository.findAll());
     }
 }
