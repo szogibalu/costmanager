@@ -1,6 +1,7 @@
 package com.szogi.costmanager.services;
 
 
+import com.szogi.costmanager.core.test.RestIntegrationTest;
 import com.szogi.costmanager.services.model.CostList;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
@@ -44,7 +45,7 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
     }
 
     @Override
-    String getRestServiceUrl() {
+    protected String getRestServiceUrl() {
         return "http://localhost:8080/cost-manager-services/rest";
     }
 }

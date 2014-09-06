@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services;
+package com.szogi.costmanager.core.test;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -24,7 +24,7 @@ public abstract class RestIntegrationTest {
     protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
     private final HttpClient client = HttpClientBuilder.create().build();
 
-    abstract String getRestServiceUrl();
+    protected abstract String getRestServiceUrl();
 
     protected String getEntityContent(final HttpResponse response) {
         try {
