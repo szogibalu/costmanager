@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.test;
+package com.szogi.costmanager.services;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;
@@ -22,10 +22,11 @@ import static javax.ws.rs.client.ClientBuilder.newClient;
 public abstract class RestIntegrationTest {
 
     protected static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
-    private static final String REST_SERVICES_URL = "http://localhost:8080/cost-manager-services/rest";
     private final HttpClient client = HttpClientBuilder.create().build();
 
-    protected static String getEntityContent(final HttpResponse response) {
+    abstract String getRestServiceUrl();
+
+    protected String getEntityContent(final HttpResponse response) {
         try {
             return IOUtils.toString(response.getEntity().getContent());
         } catch (IllegalStateException | IOException e) {
@@ -33,19 +34,19 @@ public abstract class RestIntegrationTest {
         }
     }
 
-    private static Client getJerseyClient() {
+    private Client getJerseyClient() {
         final ClientConfig clientConfig = new ClientConfig();
         clientConfig.register(JacksonFeature.class);
         return newClient(clientConfig);
     }
 
-    protected static WebTarget getWebTarget(final String uri, final String path) {
-        return getJerseyClient().target(REST_SERVICES_URL + uri).path(path);
+    protected WebTarget getWebTarget(final String uri, final String path) {
+        return getJerseyClient().target(getRestServiceUrl() + uri).path(path);
 
     }
 
     protected HttpResponse createGetClientResponse(final String serviceUrl) {
-        final HttpGet getRequest = new HttpGet(REST_SERVICES_URL + serviceUrl);
+        final HttpGet getRequest = new HttpGet(getRestServiceUrl() + serviceUrl);
         getRequest.addHeader("accept", MediaType.APPLICATION_JSON);
         try {
             return client.execute(getRequest);
@@ -55,7 +56,7 @@ public abstract class RestIntegrationTest {
     }
 
     protected HttpResponse createPostClientResponse(final String serviceUrl, final String input) {
-        final HttpPost postRequest = new HttpPost(REST_SERVICES_URL + serviceUrl);
+        final HttpPost postRequest = new HttpPost(getRestServiceUrl() + serviceUrl);
         try {
             final StringEntity entity = new StringEntity(input);
             entity.setContentType(MediaType.APPLICATION_JSON);

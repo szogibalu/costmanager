@@ -1,9 +1,9 @@
-package com.szogi.costmanager.core.service;
+package com.szogi.costmanager.services.service;
 
 
-import com.szogi.costmanager.core.model.Cost;
-import com.szogi.costmanager.core.model.CostList;
-import com.szogi.costmanager.core.repository.CostRepository;
+import com.szogi.costmanager.services.model.Cost;
+import com.szogi.costmanager.services.model.CostList;
+import com.szogi.costmanager.services.repository.CostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -26,7 +26,7 @@ public class CostService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveCost(final Cost cost) {
         costRepository.save(cost);
-        return Response.status(201).entity("Cost saved : " + cost.getDescription()).build();
+        return Response.status(201).entity("Cost saved: " + cost.getDescription()).build();
     }
 
     @GET

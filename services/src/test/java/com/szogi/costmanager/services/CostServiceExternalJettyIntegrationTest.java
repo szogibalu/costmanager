@@ -1,7 +1,7 @@
-package com.szogi.costmanager.core.test.external;
+package com.szogi.costmanager.services;
 
-import com.szogi.costmanager.core.model.CostList;
-import com.szogi.costmanager.core.test.RestIntegrationTest;
+
+import com.szogi.costmanager.services.model.CostList;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 
@@ -9,7 +9,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
 
-import static com.szogi.costmanager.core.test.util.TestObjectFactory.testCost;
+import static com.szogi.costmanager.services.util.TestObjectFactory.testCost;
 import static javax.ws.rs.client.Entity.entity;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
@@ -41,5 +41,10 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
                 .request(MediaType.APPLICATION_JSON)
                 .post(entity(testCost(), MediaType.APPLICATION_JSON_TYPE));
         assertThat(response.readEntity(String.class), allOf(containsString("Cost saved"), containsString("test")));
+    }
+
+    @Override
+    String getRestServiceUrl() {
+        return "http://localhost:8080/cost-manager-services/rest";
     }
 }

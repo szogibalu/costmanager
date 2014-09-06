@@ -1,12 +1,12 @@
-package com.szogi.costmanager.core.repository;
+package com.szogi.costmanager.services.repository;
 
-import com.szogi.costmanager.core.model.Cost;
+import com.szogi.costmanager.services.model.Cost;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
-import static com.szogi.costmanager.core.model.Cost.COLLECTION_NAME;
+import static com.szogi.costmanager.services.model.Cost.COLLECTION_NAME;
 
 @Repository
 public class ExtendedCostRepository {

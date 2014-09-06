@@ -214,9 +214,8 @@
                     </check>
                     <instrumentation>
                         <excludes>
-                            <exclude>com/szogi/costmanager/core/config/*.class</exclude>
-                            <exclude>com/szogi/costmanager/core/model/*.class</exclude>
-                            <exclude>com/szogi/costmanager/**/*Test.class</exclude>
+                            <exclude>com/szogi/costmanager/services/config/*.class</exclude>
+                            <exclude>com/szogi/costmanager/services/model/*.class</exclude>
                         </excludes>
                     </instrumentation>
                 </configuration>
@@ -251,9 +250,8 @@
                     <check/>
                     <instrumentation>
                         <excludes>
-                            <exclude>com/szogi/costmanager/core/config/*.class</exclude>
-                            <exclude>com/szogi/costmanager/core/model/*.class</exclude>
-                            <exclude>com/szogi/costmanager/**/*Test.class</exclude>
+                            <exclude>com/szogi/costmanager/services/config/*.class</exclude>
+                            <exclude>com/szogi/costmanager/services/model/*.class</exclude>
                         </excludes>
                     </instrumentation>
                 </configuration>

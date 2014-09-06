@@ -1,6 +1,6 @@
-package com.szogi.costmanager.core.repository;
+package com.szogi.costmanager.services.repository;
 
-import com.szogi.costmanager.core.model.Cost;
+import com.szogi.costmanager.services.model.Cost;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

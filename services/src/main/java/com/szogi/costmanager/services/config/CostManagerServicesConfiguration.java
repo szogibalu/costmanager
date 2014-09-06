@@ -1,12 +1,11 @@
-package com.szogi.costmanager.core.test;
+package com.szogi.costmanager.services.config;
 
-import com.szogi.costmanager.core.config.ServicesConfiguration;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource("classpath:config/services.properties")
+@PropertySource("file:${cm.config.dir}/services.properties")
 @Import(ServicesConfiguration.class)
-public class TestConfiguration {
+class CostManagerServicesConfiguration {
 }

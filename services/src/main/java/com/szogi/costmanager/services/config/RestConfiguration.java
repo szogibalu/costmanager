@@ -1,6 +1,6 @@
-package com.szogi.costmanager.core.config;
+package com.szogi.costmanager.services.config;
 
-import com.szogi.costmanager.core.service.CostService;
+import com.szogi.costmanager.services.service.CostService;
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
 import org.glassfish.jersey.server.spring.scope.RequestContextFilter;

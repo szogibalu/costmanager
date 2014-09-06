@@ -1,9 +1,9 @@
-package com.szogi.costmanager.core.config;
+package com.szogi.costmanager.services.config;
 
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.szogi.costmanager.core.repository.ExtendedCostRepository;
+import com.szogi.costmanager.services.repository.ExtendedCostRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +15,7 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.szogi.costmanager.core.repository")
+@EnableMongoRepositories(basePackages = "com.szogi.costmanager.services.repository")
 class MongoConfiguration extends AbstractMongoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfiguration.class);

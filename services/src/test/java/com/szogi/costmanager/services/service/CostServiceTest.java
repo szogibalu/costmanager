@@ -1,9 +1,9 @@
-package com.szogi.costmanager.core.service;
+package com.szogi.costmanager.services.service;
 
 import com.google.common.collect.Lists;
-import com.szogi.costmanager.core.model.Cost;
-import com.szogi.costmanager.core.model.CostList;
-import com.szogi.costmanager.core.repository.CostRepository;
+import com.szogi.costmanager.services.model.Cost;
+import com.szogi.costmanager.services.model.CostList;
+import com.szogi.costmanager.services.repository.CostRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -13,7 +13,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.ws.rs.core.Response;
 
-import static com.szogi.costmanager.core.test.util.TestObjectFactory.testCost;
+import static com.szogi.costmanager.services.util.TestObjectFactory.testCost;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;

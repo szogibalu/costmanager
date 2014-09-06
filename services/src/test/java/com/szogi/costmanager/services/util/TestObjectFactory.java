@@ -1,7 +1,7 @@
-package com.szogi.costmanager.core.test.util;
+package com.szogi.costmanager.services.util;
 
 
-import com.szogi.costmanager.core.model.Cost;
+import com.szogi.costmanager.services.model.Cost;
 
 import java.math.BigDecimal;
 

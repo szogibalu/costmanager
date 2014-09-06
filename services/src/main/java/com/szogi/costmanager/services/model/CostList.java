@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.model;
+package com.szogi.costmanager.services.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
@@ -6,12 +6,12 @@ import java.util.List;
 
 public class CostList {
 
-    private List<Cost> costs;
+    private List<com.szogi.costmanager.services.model.Cost> costs;
 
     public CostList() {
     }
 
-    public CostList(List<Cost> costs) {
+    public CostList(List<com.szogi.costmanager.services.model.Cost> costs) {
         this.costs = costs;
     }
 

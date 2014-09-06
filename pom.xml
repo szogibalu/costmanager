@@ -12,6 +12,7 @@
     <name>Cost Manager</name>
 
     <modules>
+        <module>core</module>
         <module>services</module>
     </modules>
 

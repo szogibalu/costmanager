@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.model;
+package com.szogi.costmanager.services.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.data.annotation.Id;

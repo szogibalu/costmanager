@@ -1,14 +1,14 @@
-package com.szogi.costmanager.core.repository;
+package com.szogi.costmanager.services.repository;
 
 
-import com.szogi.costmanager.core.model.Cost;
-import com.szogi.costmanager.core.test.SpringIntegrationTest;
+import com.szogi.costmanager.services.SpringIntegrationTest;
+import com.szogi.costmanager.services.model.Cost;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import static com.szogi.costmanager.core.test.util.TestObjectFactory.testCost;
+import static com.szogi.costmanager.services.util.TestObjectFactory.testCost;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;

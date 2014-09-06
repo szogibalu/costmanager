@@ -1,7 +1,8 @@
-package com.szogi.costmanager.core.test;
+package com.szogi.costmanager.services;
 
 import com.mongodb.DB;
 import com.mongodb.MongoClient;
+import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
 import de.flapdoodle.embed.mongo.Command;
 import de.flapdoodle.embed.mongo.MongodExecutable;
 import de.flapdoodle.embed.mongo.MongodProcess;
@@ -30,7 +31,7 @@ import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = {TestConfiguration.class})
+@ContextConfiguration(classes = {CostManagerServicesTestConfiguration.class})
 public class SpringIntegrationTest {
 
     private static final String TEST_MONGODB_HOST = "localhost";
@@ -40,6 +41,7 @@ public class SpringIntegrationTest {
     private static final String PASSWORD = "cm_test";
     private static MongodExecutable executable;
     private static MongodProcess process;
+
     @Autowired
     private ApplicationContext applicationContext;
 

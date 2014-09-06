@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.config;
+package com.szogi.costmanager.services.config;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
