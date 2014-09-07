@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.szogi.costmanager</groupId>
     <artifactId>core</artifactId>
     <name>Core module for Cost Manager</name>
     <packaging>jar</packaging>

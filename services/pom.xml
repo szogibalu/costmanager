@@ -9,6 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <groupId>com.szogi.costmanager</groupId>
     <artifactId>services</artifactId>
     <name>Cost Manager Rest Services</name>
     <packaging>war</packaging>
