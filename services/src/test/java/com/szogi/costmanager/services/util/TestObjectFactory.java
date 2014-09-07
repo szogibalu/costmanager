@@ -11,7 +11,6 @@ public final class TestObjectFactory {
     }
 
     public static Cost testCost() {
-        return new Cost.Builder().setDescription("test").setValue(BigDecimal.ONE).build();
+        return new Cost.Builder().setDescription("test").setAmount(BigDecimal.ONE).build();
     }
-
 }

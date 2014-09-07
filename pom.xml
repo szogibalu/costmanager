@@ -200,7 +200,6 @@
     <distributionManagement>
         <repository>
             <id>cloudbees-snapshot</id>
-            <url>https://repository-szogibalu.forge.cloudbees.com/snapshot/</url>
         </repository>
     </distributionManagement>
 
@@ -212,6 +211,7 @@
                 <updatePolicy>never</updatePolicy>
                 <checksumPolicy>fail</checksumPolicy>
             </snapshots>
+            <url>https://repository-szogibalu.forge.cloudbees.com/snapshot/</url>
         </repository>
     </repositories>
 </project>

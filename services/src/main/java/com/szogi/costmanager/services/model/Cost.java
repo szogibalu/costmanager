@@ -25,17 +25,17 @@ public class Cost implements Serializable {
 
     private Date date;
 
-    private BigDecimal value;
+    private BigDecimal amount;
 
     private String currency;
 
     public Cost() {
     }
 
-    private Cost(String description, Date date, BigDecimal value, String currency) {
+    private Cost(String description, Date date, BigDecimal amount, String currency) {
         this.description = description;
         this.date = date;
-        this.value = value;
+        this.amount = amount;
         this.currency = currency;
     }
 
@@ -63,12 +63,12 @@ public class Cost implements Serializable {
         this.date = date;
     }
 
-    public BigDecimal getValue() {
-        return value;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setValue(BigDecimal value) {
-        this.value = value;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
     public String getCurrency() {
@@ -103,7 +103,7 @@ public class Cost implements Serializable {
 
         private String description;
         private Date date = new Date();
-        private BigDecimal value;
+        private BigDecimal amount;
         private String currency = "HUF";
 
         public Builder setDescription(String description) {
@@ -116,8 +116,8 @@ public class Cost implements Serializable {
             return this;
         }
 
-        public Builder setValue(BigDecimal value) {
-            this.value = value;
+        public Builder setAmount(BigDecimal amount) {
+            this.amount = amount;
             return this;
         }
 
@@ -129,10 +129,10 @@ public class Cost implements Serializable {
         public Cost build() {
             notNull(description);
             notNull(date);
-            notNull(value);
+            notNull(amount);
             notNull(currency);
 
-            return new Cost(description, date, value, currency);
+            return new Cost(description, date, amount, currency);
         }
     }
 }
