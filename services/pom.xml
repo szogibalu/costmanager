@@ -127,7 +127,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.szogi</groupId>
+            <groupId>com.szogi.costmanager</groupId>
             <artifactId>core</artifactId>
         </dependency>
     </dependencies>
