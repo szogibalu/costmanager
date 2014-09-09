@@ -180,6 +180,13 @@
                 <artifactId>logback-access</artifactId>
                 <version>${logback.version}</version>
             </dependency>
+
+            <!-- Servlet -->
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>servlet-api</artifactId>
+                <version>2.5</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -200,6 +207,7 @@
     <distributionManagement>
         <repository>
             <id>cloudbees-snapshot</id>
+            <url>https://repository-szogibalu.forge.cloudbees.com/snapshot/</url>
         </repository>
     </distributionManagement>
 

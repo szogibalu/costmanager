@@ -20,11 +20,23 @@ public abstract class ExtendedRepository {
     protected abstract Class<?> getCollection();
 
     public void createCollection() {
-        if (!operations.collectionExists(getCollection())) {
+        createCollection(false);
+    }
+
+    public void createCollection(boolean drop) {
+        boolean alreadyExists = false;
+        if (operations.collectionExists(getCollection())) {
+            LOGGER.warn("Collection already exists: {}", getCollection());
+            if (drop) {
+                dropCollection();
+            } else {
+                alreadyExists = true;
+            }
+        }
+
+        if (!alreadyExists) {
             LOGGER.info("Create collection: {}", getCollection());
             operations.createCollection(getCollection());
-        } else {
-            LOGGER.warn("Collection already exists: {}", getCollection());
         }
     }
 

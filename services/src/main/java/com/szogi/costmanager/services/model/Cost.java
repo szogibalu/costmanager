@@ -8,15 +8,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
+import static com.google.common.collect.Lists.newArrayList;
 import static org.apache.commons.lang3.Validate.notNull;
 
-@Document(collection = Cost.COLLECTION_NAME)
+@Document(collection = "costs")
 @TypeAlias("cost")
 public class Cost implements Serializable {
-
-    public static final String COLLECTION_NAME = "costs";
 
     @Id
     private String id;
@@ -29,14 +29,9 @@ public class Cost implements Serializable {
 
     private String currency;
 
-    public Cost() {
-    }
+    private List<Tag> tags;
 
-    private Cost(String description, Date date, BigDecimal amount, String currency) {
-        this.description = description;
-        this.date = date;
-        this.amount = amount;
-        this.currency = currency;
+    public Cost() {
     }
 
     public String getId() {
@@ -79,6 +74,14 @@ public class Cost implements Serializable {
         this.currency = currency;
     }
 
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o instanceof Cost) {
@@ -101,6 +104,7 @@ public class Cost implements Serializable {
 
     public static class Builder {
 
+        private final List<Tag> tags = newArrayList();
         private String description;
         private Date date = new Date();
         private BigDecimal amount;
@@ -126,13 +130,29 @@ public class Cost implements Serializable {
             return this;
         }
 
+        public Builder addTag(Tag tag) {
+            tags.add(tag);
+            return this;
+        }
+
+        public Builder addTag(Tag... tags) {
+            this.tags.addAll(newArrayList(tags));
+            return this;
+        }
+
         public Cost build() {
             notNull(description);
             notNull(date);
             notNull(amount);
             notNull(currency);
 
-            return new Cost(description, date, amount, currency);
+            Cost cost = new Cost();
+            cost.setDescription(description);
+            cost.setAmount(amount);
+            cost.setCurrency(currency);
+            cost.setDate(date);
+            cost.setTags(tags);
+            return cost;
         }
     }
 }

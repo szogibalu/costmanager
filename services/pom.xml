@@ -130,6 +130,11 @@
             <groupId>com.szogi.costmanager</groupId>
             <artifactId>core</artifactId>
         </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -143,15 +148,18 @@
                     <systemProperties>
                         <systemProperty>
                             <name>cm.config.dir</name>
-                            <value>${basedir}/target/test-classes/external-test-config</value>
+                            <value>${basedir}/target/test-classes/config</value>
                         </systemProperty>
                     </systemProperties>
                     <scanIntervalSeconds>10</scanIntervalSeconds>
                     <stopKey>stop</stopKey>
                     <stopPort>9999</stopPort>
+                    <useTestScope>true</useTestScope>
                     <war>${basedir}/target/cost-manager-services.war</war>
                     <webApp>
                         <contextPath>/cost-manager-services</contextPath>
+                        <descriptor>${basedir}/target/test-classes/test-web.xml</descriptor>
+
                     </webApp>
                 </configuration>
                 <executions>

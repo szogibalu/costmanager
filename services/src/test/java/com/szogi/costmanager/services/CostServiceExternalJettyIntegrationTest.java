@@ -2,6 +2,7 @@ package com.szogi.costmanager.services;
 
 
 import com.szogi.costmanager.core.test.RestIntegrationTest;
+import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
@@ -31,17 +32,19 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
 
     @Test
     public void testSave() throws IOException {
-        final HttpResponse response = createPostClientResponse(COST_SERVICE_URL + SAVE_PATH, OBJECT_MAPPER.writeValueAsString(testCost()));
+        Cost cost = testCost();
+        final HttpResponse response = createPostClientResponse(COST_SERVICE_URL + SAVE_PATH, OBJECT_MAPPER.writeValueAsString(cost));
         assertThat(response.getStatusLine().getStatusCode(), is(201));
-        assertThat(getEntityContent(response), allOf(containsString("Cost saved"), containsString("test")));
+        assertThat(getEntityContent(response), allOf(containsString("Cost saved"), containsString(cost.getDescription())));
     }
 
     @Test
     public void testSaveWithJerseyClient() throws IOException {
+        Cost cost = testCost();
         final Response response = getWebTarget(COST_SERVICE_URL, SAVE_PATH)
                 .request(MediaType.APPLICATION_JSON)
-                .post(entity(testCost(), MediaType.APPLICATION_JSON_TYPE));
-        assertThat(response.readEntity(String.class), allOf(containsString("Cost saved"), containsString("test")));
+                .post(entity(cost, MediaType.APPLICATION_JSON_TYPE));
+        assertThat(response.readEntity(String.class), allOf(containsString("Cost saved"), containsString(cost.getDescription())));
     }
 
     @Override

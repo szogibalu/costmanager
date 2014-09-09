@@ -13,12 +13,9 @@ import javax.ws.rs.core.Response;
 @Path("/json/costservice")
 public class CostService {
 
-    private final CostRepository costRepository;
-
     @Autowired
-    public CostService(CostRepository costRepository) {
-        this.costRepository = costRepository;
-    }
+    private CostRepository costRepository;
+
 
     @POST
     @Path("/save")
