@@ -4,6 +4,7 @@ package com.szogi.costmanager.services.config;
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.szogi.costmanager.services.repository.CostExtendedRepository;
+import com.szogi.costmanager.services.repository.TagExtendedRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,6 +46,11 @@ class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Bean
     public CostExtendedRepository extendedCostRepository() throws Exception {
-        return new CostExtendedRepository(mongoTemplate());
+        return new CostExtendedRepository();
+    }
+
+    @Bean
+    public TagExtendedRepository tagExtendedRepository() throws Exception {
+        return new TagExtendedRepository();
     }
 }

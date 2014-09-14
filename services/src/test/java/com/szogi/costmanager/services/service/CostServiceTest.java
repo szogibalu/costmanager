@@ -3,7 +3,7 @@ package com.szogi.costmanager.services.service;
 import com.google.common.collect.Lists;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
-import com.szogi.costmanager.services.repository.CostRepository;
+import com.szogi.costmanager.services.repository.CostExtendedRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 public class CostServiceTest {
 
     @Mock
-    CostRepository mockedCostRepository;
+    CostExtendedRepository mockedCostRepository;
 
     @InjectMocks
     @Resource

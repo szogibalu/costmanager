@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html ng-app="cost-manager">
+<head>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="js/controllers.js"></script>
+    <script type="text/javascript" src="js/directives.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+</head>
+
+<body ng-controller="CostController as controller">
+<header>
+    <h1 class="text-center">Cost Manager</h1>
+</header>
+<!--  Costs Container  -->
+<div class="list-group">
+    <!--  Cost Container  -->
+    <div class="list-group-item" ng-repeat="cost in controller.costs">
+        <h3>{{cost.description}} <em class="pull-right">{{cost.amount | currency}}</em></h3>
+        <!-- Cost Tabs  -->
+        <cost-tabs></cost-tabs>
+    </div>
+</div>
+</body>
+</html>

@@ -3,6 +3,7 @@ package com.szogi.costmanager.services.model;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.TypeAlias;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
@@ -29,6 +30,7 @@ public class Cost implements Serializable {
 
     private String currency;
 
+    @DBRef
     private List<Tag> tags;
 
     public Cost() {

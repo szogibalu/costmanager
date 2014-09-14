@@ -1,7 +1,7 @@
 package com.szogi.costmanager.services.repository;
 
-import com.szogi.costmanager.services.model.Cost;
+import com.szogi.costmanager.services.model.Tag;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-interface CostRepository extends MongoRepository<Cost, String> {
+interface TagRepository extends MongoRepository<Tag, String> {
 }

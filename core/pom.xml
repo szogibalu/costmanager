@@ -11,7 +11,7 @@
 
     <groupId>com.szogi.costmanager</groupId>
     <artifactId>core</artifactId>
-    <name>Core module for Cost Manager</name>
+    <name>Cost Manager Core</name>
     <packaging>jar</packaging>
 
     <dependencies>

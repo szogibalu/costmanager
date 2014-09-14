@@ -25,63 +25,50 @@ public class LocalMongoDb {
     private static final String TEST_USER = "test_user";
     private static final String PASSWORD = "cm_test";
 
-    private final MongodExecutable executable;
-    private final MongodProcess process;
+    private static MongodExecutable executable;
+    private static MongodProcess process;
 
-    public LocalMongoDb(MongodExecutable executable, MongodProcess process) {
-        this.executable = executable;
-        this.process = process;
-    }
+    public static void start() {
+        MongoClient client;
+        try {
+            executable = MongodStarter.getInstance(getiRuntimeConfig()).prepare(new MongodConfigBuilder()
+                    .version(PRODUCTION)
+                    .net(new Net(TEST_MONGODB_PORT, localhostIsIPv6()))
+                    .build());
+            process = executable.start();
 
-    public static LocalMongoDb start() {
-        return Initializer.INSTANCE;
+            client = new MongoClient(TEST_MONGODB_HOST, TEST_MONGODB_PORT);
+        } catch (Exception e) {
+            throw propagate(e);
+        }
+
+        DB db = client.getDB(TEST_MONGODB_DB);
+        db.addUser(TEST_USER, PASSWORD.toCharArray());
     }
 
     public static void stop() {
-        Initializer.INSTANCE.process.stop();
-        Initializer.INSTANCE.executable.stop();
+        try {
+            process.stop();
+            executable.stop();
+        } finally {
+            executable = null;
+            process = null;
+        }
     }
 
-    private static class Initializer {
+    private static IRuntimeConfig getiRuntimeConfig() {
+        return new RuntimeConfigBuilder()
+                .defaults(MongoD)
+                .artifactStore(new ArtifactStoreBuilder()
+                        .defaults(MongoD)
+                        .download(new DownloadConfigBuilder()
+                                .defaultsForCommand(MongoD)
+                                .artifactStorePath(getArtifactStorePath()))
+                        .executableNaming(new UUIDTempNaming()))
+                .build();
+    }
 
-        private static final LocalMongoDb INSTANCE = create();
-
-        private static LocalMongoDb create() {
-            MongoClient client;
-            MongodExecutable executable;
-            MongodProcess process;
-            try {
-                executable = MongodStarter.getInstance(getiRuntimeConfig()).prepare(new MongodConfigBuilder()
-                        .version(PRODUCTION)
-                        .net(new Net(TEST_MONGODB_PORT, localhostIsIPv6()))
-                        .build());
-                process = executable.start();
-
-                client = new MongoClient(TEST_MONGODB_HOST, TEST_MONGODB_PORT);
-            } catch (Exception e) {
-                throw propagate(e);
-            }
-
-            DB db = client.getDB(TEST_MONGODB_DB);
-            db.addUser(TEST_USER, PASSWORD.toCharArray());
-
-            return new LocalMongoDb(executable, process);
-        }
-
-        private static IRuntimeConfig getiRuntimeConfig() {
-            return new RuntimeConfigBuilder()
-                    .defaults(MongoD)
-                    .artifactStore(new ArtifactStoreBuilder()
-                            .defaults(MongoD)
-                            .download(new DownloadConfigBuilder()
-                                    .defaultsForCommand(MongoD)
-                                    .artifactStorePath(getArtifactStorePath()))
-                            .executableNaming(new UUIDTempNaming()))
-                    .build();
-        }
-
-        private static FixedPath getArtifactStorePath() {
-            return new FixedPath(getProperty("java.io.tmpdir"));
-        }
+    private static FixedPath getArtifactStorePath() {
+        return new FixedPath(getProperty("java.io.tmpdir"));
     }
 }

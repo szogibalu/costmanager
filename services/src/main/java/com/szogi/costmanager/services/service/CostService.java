@@ -3,7 +3,7 @@ package com.szogi.costmanager.services.service;
 
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
-import com.szogi.costmanager.services.repository.CostRepository;
+import com.szogi.costmanager.services.repository.CostExtendedRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;
@@ -14,7 +14,7 @@ import javax.ws.rs.core.Response;
 public class CostService {
 
     @Autowired
-    private CostRepository costRepository;
+    private CostExtendedRepository costRepository;
 
 
     @POST

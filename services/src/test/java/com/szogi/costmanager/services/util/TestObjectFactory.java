@@ -14,6 +14,18 @@ public final class TestObjectFactory {
     }
 
     public static Cost testCost() {
-        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.ONE).addTag(new Tag(randomAlphabetic(10))).build();
+        return testCost(testTag());
+    }
+
+    public static Cost testCost(Tag tag) {
+        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.ONE).addTag(tag).build();
+    }
+
+    public static Cost testCostWithoutAnyTag() {
+        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.TEN).build();
+    }
+
+    public static Tag testTag() {
+        return new Tag(randomAlphabetic(10));
     }
 }

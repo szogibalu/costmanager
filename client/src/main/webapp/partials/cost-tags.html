@@ -1,0 +1,19 @@
+<!--  Cost Tags List -->
+<ul>
+    <li ng-repeat="tag in cost.tags">
+        <p>
+            {{tag.description}}
+        </p>
+    </li>
+</ul>
+
+<!--  Tag Form -->
+<form name="tagForm" ng-controller="TagController as tagCtrl" ng-submit="tagCtrl.addTag(cost)">
+    <fieldset class="form-group">
+        <input ng-model="tagCtrl.tag.description" class="form-control" placeholder="Write a short tag..." title="Tag"
+               type="text"/>
+    </fieldset>
+    <fieldset class="form-group">
+        <input type="submit" class="btn btn-primary pull-right" value="Add Tag"/>
+    </fieldset>
+</form>
