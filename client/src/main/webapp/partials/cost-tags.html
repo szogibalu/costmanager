@@ -8,10 +8,11 @@
 </ul>
 
 <!--  Tag Form -->
-<form name="tagForm" ng-controller="TagController as tagCtrl" ng-submit="tagCtrl.addTag(cost)">
+<form name="tagForm" ng-controller="TagController as tagCtrl" ng-submit="tagForm.$valid && tagCtrl.addTag(cost)"
+      novalidate="">
     <fieldset class="form-group">
         <input ng-model="tagCtrl.tag.description" class="form-control" placeholder="Write a short tag..." title="Tag"
-               type="text"/>
+               type="text" ng-minlength=3 ng-maxlength=20 required/>
     </fieldset>
     <fieldset class="form-group">
         <input type="submit" class="btn btn-primary pull-right" value="Add Tag"/>
