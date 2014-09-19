@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.config;
+package com.szogi.costmanager.core.dao;
 
 
 import com.mongodb.DB;
@@ -17,7 +17,7 @@ import static de.flapdoodle.embed.mongo.distribution.Version.Main.PRODUCTION;
 import static de.flapdoodle.embed.process.runtime.Network.localhostIsIPv6;
 import static java.lang.System.getProperty;
 
-public class LocalMongoDb {
+public class EmbeddedMongoDbServer {
 
     private static final String TEST_MONGODB_HOST = "localhost";
     private static final int TEST_MONGODB_PORT = 12345;

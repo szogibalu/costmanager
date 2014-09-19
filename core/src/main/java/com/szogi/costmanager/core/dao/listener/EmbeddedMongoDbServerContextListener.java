@@ -1,18 +1,20 @@
-package com.szogi.costmanager.services.config;
+package com.szogi.costmanager.core.dao.listener;
 
+
+import com.szogi.costmanager.core.dao.EmbeddedMongoDbServer;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-public class LocalMongoDbContextListener implements ServletContextListener {
+public class EmbeddedMongoDbServerContextListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        LocalMongoDb.start();
+        EmbeddedMongoDbServer.start();
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent servletContextEvent) {
-        LocalMongoDb.stop();
+        EmbeddedMongoDbServer.stop();
     }
 }

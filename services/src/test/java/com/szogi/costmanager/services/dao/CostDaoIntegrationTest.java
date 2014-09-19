@@ -1,8 +1,8 @@
 package com.szogi.costmanager.services.dao;
 
 
+import com.szogi.costmanager.core.dao.EmbeddedMongoDbServer;
 import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
-import com.szogi.costmanager.services.config.LocalMongoDb;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.Tag;
 import org.junit.*;
@@ -30,12 +30,12 @@ public class CostDaoIntegrationTest {
 
     @BeforeClass
     public static void init() throws Exception {
-        LocalMongoDb.start();
+        EmbeddedMongoDbServer.start();
     }
 
     @AfterClass
     public static void close() throws Exception {
-        LocalMongoDb.stop();
+        EmbeddedMongoDbServer.stop();
     }
 
     @Test
