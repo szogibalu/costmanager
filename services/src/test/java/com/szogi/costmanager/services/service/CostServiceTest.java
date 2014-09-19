@@ -1,9 +1,9 @@
 package com.szogi.costmanager.services.service;
 
 import com.google.common.collect.Lists;
+import com.szogi.costmanager.services.dao.CostDao;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
-import com.szogi.costmanager.services.repository.CostExtendedRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ import static org.mockito.Mockito.verify;
 public class CostServiceTest {
 
     @Mock
-    CostExtendedRepository mockedCostRepository;
+    CostDao mockedCostDao;
 
     @InjectMocks
     @Resource
@@ -35,15 +35,14 @@ public class CostServiceTest {
     public void save() {
         Cost cost = testCost();
         Response response = target.saveCost(cost);
-        verify(mockedCostRepository).save(cost);
+        verify(mockedCostDao).save(cost);
         assertThat(response, is(notNullValue()));
     }
 
     @Test
     public void loadAll() {
-        Mockito.when(mockedCostRepository.findAll()).thenReturn(Lists.<Cost>newArrayList());
+        Mockito.when(mockedCostDao.findAll()).thenReturn(Lists.<Cost>newArrayList());
         CostList costList = target.loadAll();
         assertThat(costList, is(notNullValue()));
-
     }
 }

@@ -1,6 +1,6 @@
-package com.szogi.costmanager.services.repository;
+package com.szogi.costmanager.services.dao;
 
-import com.szogi.costmanager.core.repository.ExtendedRepository;
+import com.szogi.costmanager.core.dao.AbstractMongoDbDao;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
 
-public class CostExtendedRepository extends ExtendedRepository {
+public class CostDao extends AbstractMongoDbDao {
 
     @Autowired
     private CostRepository costRepository;

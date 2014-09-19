@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.repository;
+package com.szogi.costmanager.core.dao;
 
 
 import org.slf4j.Logger;
@@ -8,9 +8,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public abstract class ExtendedRepository {
+public abstract class AbstractMongoDbDao {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExtendedRepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(AbstractMongoDbDao.class);
 
     @Autowired
     protected MongoOperations operations;

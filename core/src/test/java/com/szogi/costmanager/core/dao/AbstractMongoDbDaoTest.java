@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.repository;
+package com.szogi.costmanager.core.dao;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,19 +11,17 @@ import javax.annotation.Resource;
 
 import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
-import static org.mockito.Mockito.never;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
-public class ExtendedRepositoryTest {
+public class AbstractMongoDbDaoTest {
 
     @Mock
     MongoOperations mockedOperations;
 
     @InjectMocks
     @Resource
-    private TestableExtendedRepository target;
+    private TestableAbstractMongoDbDao target;
 
     @Test
     public void createIfNotExists() {
@@ -53,9 +51,10 @@ public class ExtendedRepositoryTest {
         verify(mockedOperations).dropCollection(TestClass.class);
     }
 
-    private static class TestClass{}
+    private static class TestClass {
+    }
 
-    private static class TestableExtendedRepository extends ExtendedRepository{
+    private static class TestableAbstractMongoDbDao extends AbstractMongoDbDao {
         @Override
         protected Class<?> getCollection() {
             return TestClass.class;

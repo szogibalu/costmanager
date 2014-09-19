@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.repository;
+package com.szogi.costmanager.services.dao;
 
 
 import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
@@ -17,13 +17,13 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CostManagerServicesTestConfiguration.class})
-public class CostRepositoryIntegrationTest {
+public class CostDaoIntegrationTest {
 
     @Autowired
-    private CostExtendedRepository costExtendedRepository;
+    private CostDao costDao;
 
     @Autowired
-    private TagExtendedRepository tagExtendedRepository;
+    private TagDao tagDao;
 
     @Autowired
     private TagRepository tagRepository;
@@ -40,47 +40,47 @@ public class CostRepositoryIntegrationTest {
 
     @Test
     public void saveWithNewTag() {
-        Cost savedCost = costExtendedRepository.save(testCost());
-        Cost loadedCost = costExtendedRepository.findOne(savedCost.getId());
-        assertThat(loadedCost, is(notNullValue()));
-        assertThat(loadedCost.getTags(), is(not(empty())));
-    }
-    
-    @Test
-    public void saveWithExistingTag() {
-        Tag savedTag = tagRepository.save(testTag());
-        Cost savedCost = costExtendedRepository.save(testCost(savedTag));
-        Cost loadedCost = costExtendedRepository.findOne(savedCost.getId());
+        Cost savedCost = costDao.save(testCost());
+        Cost loadedCost = costDao.findOne(savedCost.getId());
         assertThat(loadedCost, is(notNullValue()));
         assertThat(loadedCost.getTags(), is(not(empty())));
     }
 
     @Test
-    public void saveWithoutAnyTag(){
-        Cost savedCost = costExtendedRepository.save(testCostWithoutAnyTag());
-        Cost loadedCost = costExtendedRepository.findOne(savedCost.getId());
+    public void saveWithExistingTag() {
+        Tag savedTag = tagRepository.save(testTag());
+        Cost savedCost = costDao.save(testCost(savedTag));
+        Cost loadedCost = costDao.findOne(savedCost.getId());
+        assertThat(loadedCost, is(notNullValue()));
+        assertThat(loadedCost.getTags(), is(not(empty())));
+    }
+
+    @Test
+    public void saveWithoutAnyTag() {
+        Cost savedCost = costDao.save(testCostWithoutAnyTag());
+        Cost loadedCost = costDao.findOne(savedCost.getId());
         assertThat(loadedCost, is(notNullValue()));
         assertThat(loadedCost.getTags(), is((empty())));
     }
 
     @Test
-    public void findAll(){
+    public void findAll() {
         int costNumber = 5;
         for (int i = 0; i < costNumber; i++) {
-            costExtendedRepository.save(testCost());
+            costDao.save(testCost());
         }
-      assertThat(costExtendedRepository.findAll().size(), is(costNumber));
+        assertThat(costDao.findAll().size(), is(costNumber));
     }
 
     @Before
     public void setUp() throws Exception {
-        tagExtendedRepository.createCollection(true);
-        costExtendedRepository.createCollection(true);
+        tagDao.createCollection(true);
+        costDao.createCollection(true);
     }
 
     @After
     public void clear() throws Exception {
-        costExtendedRepository.dropCollection();
-        tagExtendedRepository.dropCollection();
+        costDao.dropCollection();
+        tagDao.dropCollection();
     }
 }

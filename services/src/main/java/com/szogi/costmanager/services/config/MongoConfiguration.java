@@ -3,8 +3,8 @@ package com.szogi.costmanager.services.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.szogi.costmanager.services.repository.CostExtendedRepository;
-import com.szogi.costmanager.services.repository.TagExtendedRepository;
+import com.szogi.costmanager.services.dao.CostDao;
+import com.szogi.costmanager.services.dao.TagDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.szogi.costmanager.services.repository")
+@EnableMongoRepositories(basePackages = "com.szogi.costmanager.services.dao")
 class MongoConfiguration extends AbstractMongoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfiguration.class);
@@ -45,12 +45,12 @@ class MongoConfiguration extends AbstractMongoConfiguration {
     }
 
     @Bean
-    public CostExtendedRepository extendedCostRepository() throws Exception {
-        return new CostExtendedRepository();
+    public CostDao costDao() throws Exception {
+        return new CostDao();
     }
 
     @Bean
-    public TagExtendedRepository tagExtendedRepository() throws Exception {
-        return new TagExtendedRepository();
+    public TagDao tagDao() throws Exception {
+        return new TagDao();
     }
 }
