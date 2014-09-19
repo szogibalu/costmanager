@@ -5,6 +5,7 @@ import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
 import com.szogi.costmanager.services.dao.CostDao;
 import com.szogi.costmanager.services.dao.TagDao;
+import com.szogi.costmanager.services.dao.listener.CostMongoEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,5 +53,10 @@ class MongoConfiguration extends AbstractMongoConfiguration {
     @Bean
     public TagDao tagDao() throws Exception {
         return new TagDao();
+    }
+
+    @Bean
+    public CostMongoEventListener costMongoEventListener() {
+        return new CostMongoEventListener();
     }
 }
