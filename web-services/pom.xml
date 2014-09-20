@@ -126,6 +126,10 @@
             <artifactId>core</artifactId>
         </dependency>
         <dependency>
+            <groupId>com.szogi.costmanager</groupId>
+            <artifactId>data-services</artifactId>
+        </dependency>
+        <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
         </dependency>

@@ -6,6 +6,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("classpath:config/services.properties")
-@Import(WebServicesConfiguration.class)
+@Import(MongoConfiguration.class)
 public class CostManagerServicesTestConfiguration {
 }

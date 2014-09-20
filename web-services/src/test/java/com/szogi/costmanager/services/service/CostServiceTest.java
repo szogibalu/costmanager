@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.szogi.costmanager.services.dao.CostDao;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
+import com.szogi.costmanager.services.model.Tag;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,7 +15,9 @@ import org.mockito.runners.MockitoJUnitRunner;
 import javax.annotation.Resource;
 import javax.ws.rs.core.Response;
 
-import static com.szogi.costmanager.services.util.TestObjectFactory.testCost;
+import java.math.BigDecimal;
+
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.assertThat;
@@ -33,7 +36,11 @@ public class CostServiceTest {
 
     @Test
     public void save() {
-        Cost cost = testCost();
+        Cost cost = new Cost.Builder()
+                .setDescription(randomAlphabetic(15))
+                .setAmount(BigDecimal.ONE)
+                .addTag(new Tag(randomAlphabetic(10)))
+                .build();
         Response response = target.saveCost(cost);
         verify(mockedCostDao).save(cost);
         assertThat(response, is(notNullValue()));

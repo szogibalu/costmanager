@@ -4,15 +4,17 @@ package com.szogi.costmanager.services;
 import com.szogi.costmanager.core.test.RestIntegrationTest;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.CostList;
+import com.szogi.costmanager.services.model.Tag;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.IOException;
+import java.math.BigDecimal;
 
-import static com.szogi.costmanager.services.util.TestObjectFactory.testCost;
 import static javax.ws.rs.client.Entity.entity;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -32,7 +34,7 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
 
     @Test
     public void testSave() throws IOException {
-        Cost cost = testCost();
+        Cost cost = getCost();
         final HttpResponse response = createPostClientResponse(COST_SERVICE_URL + SAVE_PATH, OBJECT_MAPPER.writeValueAsString(cost));
         assertThat(response.getStatusLine().getStatusCode(), is(201));
         assertThat(getEntityContent(response), allOf(containsString("Cost saved"), containsString(cost.getDescription())));
@@ -40,7 +42,7 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
 
     @Test
     public void testSaveWithJerseyClient() throws IOException {
-        Cost cost = testCost();
+        Cost cost = getCost();
         final Response response = getWebTarget(COST_SERVICE_URL, SAVE_PATH)
                 .request(MediaType.APPLICATION_JSON)
                 .post(entity(cost, MediaType.APPLICATION_JSON_TYPE));
@@ -50,5 +52,10 @@ public class CostServiceExternalJettyIntegrationTest extends RestIntegrationTest
     @Override
     protected String getRestServiceUrl() {
         return "http://localhost:8080/cost-manager-services/rest";
+    }
+
+
+    private static Cost getCost() {
+        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.ONE).addTag(new Tag(randomAlphabetic(10))).build();
     }
 }

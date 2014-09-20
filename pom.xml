@@ -48,6 +48,11 @@
                 <artifactId>core</artifactId>
                 <version>${project.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.szogi.costmanager</groupId>
+                <artifactId>data-services</artifactId>
+                <version>${project.version}</version>
+            </dependency>
 
             <!-- Utils -->
             <dependency>
@@ -70,7 +75,6 @@
                 <artifactId>commons-collections</artifactId>
                 <version>${apache.commons.collections}</version>
             </dependency>
-
 
             <!-- Test -->
             <dependency>

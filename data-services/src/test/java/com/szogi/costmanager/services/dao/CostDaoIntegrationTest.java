@@ -5,13 +5,13 @@ import com.szogi.costmanager.core.dao.EmbeddedMongoDbServer;
 import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
 import com.szogi.costmanager.services.model.Cost;
 import com.szogi.costmanager.services.model.Tag;
+import com.szogi.costmanager.services.util.TestObjectFactory;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import static com.szogi.costmanager.services.util.TestObjectFactory.*;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
@@ -40,7 +40,7 @@ public class CostDaoIntegrationTest {
 
     @Test
     public void saveWithNewTag() {
-        Cost savedCost = costDao.save(testCost());
+        Cost savedCost = costDao.save(TestObjectFactory.testCost());
         Cost loadedCost = costDao.findOne(savedCost.getId());
         assertThat(loadedCost, is(notNullValue()));
         assertThat(loadedCost.getTags(), is(not(empty())));
@@ -48,8 +48,8 @@ public class CostDaoIntegrationTest {
 
     @Test
     public void saveWithExistingTag() {
-        Tag savedTag = tagRepository.save(testTag());
-        Cost savedCost = costDao.save(testCost(savedTag));
+        Tag savedTag = tagRepository.save(TestObjectFactory.testTag());
+        Cost savedCost = costDao.save(TestObjectFactory.testCost(savedTag));
         Cost loadedCost = costDao.findOne(savedCost.getId());
         assertThat(loadedCost, is(notNullValue()));
         assertThat(loadedCost.getTags(), is(not(empty())));
@@ -57,7 +57,7 @@ public class CostDaoIntegrationTest {
 
     @Test
     public void saveWithoutAnyTag() {
-        Cost savedCost = costDao.save(testCostWithoutAnyTag());
+        Cost savedCost = costDao.save(TestObjectFactory.testCostWithoutAnyTag());
         Cost loadedCost = costDao.findOne(savedCost.getId());
         assertThat(loadedCost, is(notNullValue()));
         assertThat(loadedCost.getTags(), is((empty())));
@@ -67,7 +67,7 @@ public class CostDaoIntegrationTest {
     public void findAll() {
         int costNumber = 5;
         for (int i = 0; i < costNumber; i++) {
-            costDao.save(testCost());
+            costDao.save(TestObjectFactory.testCost());
         }
         assertThat(costDao.findAll().size(), is(costNumber));
     }
