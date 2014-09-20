@@ -11,7 +11,7 @@ import java.util.Objects;
 
 @Document(collection = "tags")
 @TypeAlias("tag")
-public class Tag {
+public class TagObject {
 
     @Id
     private String id;
@@ -19,10 +19,10 @@ public class Tag {
     @Indexed(unique = true)
     private String description;
 
-    public Tag() {
+    public TagObject() {
     }
 
-    public Tag(String description) {
+    public TagObject(String description) {
         this.description = description;
     }
 
@@ -44,8 +44,8 @@ public class Tag {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Tag) {
-            Tag other = (Tag) o;
+        if (o instanceof TagObject) {
+            TagObject other = (TagObject) o;
             return Objects.equals(id, other.id)
                     && Objects.equals(description, other.description);
         }

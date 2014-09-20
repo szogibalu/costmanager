@@ -17,7 +17,7 @@ import static org.apache.commons.lang3.Validate.notNull;
 
 @Document(collection = "costs")
 @TypeAlias("cost")
-public class Cost implements Serializable {
+public class CostObject implements Serializable {
 
     @Id
     private String id;
@@ -31,9 +31,9 @@ public class Cost implements Serializable {
     private String currency;
 
     @DBRef
-    private List<Tag> tags;
+    private List<TagObject> tagObjects;
 
-    public Cost() {
+    public CostObject() {
     }
 
     public String getId() {
@@ -76,18 +76,18 @@ public class Cost implements Serializable {
         this.currency = currency;
     }
 
-    public List<Tag> getTags() {
-        return tags;
+    public List<TagObject> getTagObjects() {
+        return tagObjects;
     }
 
-    public void setTags(List<Tag> tags) {
-        this.tags = tags;
+    public void setTagObjects(List<TagObject> tagObjects) {
+        this.tagObjects = tagObjects;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Cost) {
-            Cost other = (Cost) o;
+        if (o instanceof CostObject) {
+            CostObject other = (CostObject) o;
             return Objects.equals(id, other.id)
                     && Objects.equals(description, other.description);
         }
@@ -106,7 +106,7 @@ public class Cost implements Serializable {
 
     public static class Builder {
 
-        private final List<Tag> tags = newArrayList();
+        private final List<TagObject> tagObjects = newArrayList();
         private String description;
         private Date date = new Date();
         private BigDecimal amount;
@@ -132,29 +132,29 @@ public class Cost implements Serializable {
             return this;
         }
 
-        public Builder addTag(Tag tag) {
-            tags.add(tag);
+        public Builder addTag(TagObject tagObject) {
+            tagObjects.add(tagObject);
             return this;
         }
 
-        public Builder addTag(Tag... tags) {
-            this.tags.addAll(newArrayList(tags));
+        public Builder addTag(TagObject... tagObjects) {
+            this.tagObjects.addAll(newArrayList(tagObjects));
             return this;
         }
 
-        public Cost build() {
+        public CostObject build() {
             notNull(description);
             notNull(date);
             notNull(amount);
             notNull(currency);
 
-            Cost cost = new Cost();
-            cost.setDescription(description);
-            cost.setAmount(amount);
-            cost.setCurrency(currency);
-            cost.setDate(date);
-            cost.setTags(tags);
-            return cost;
+            CostObject costObject = new CostObject();
+            costObject.setDescription(description);
+            costObject.setAmount(amount);
+            costObject.setCurrency(currency);
+            costObject.setDate(date);
+            costObject.setTagObjects(tagObjects);
+            return costObject;
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.model;
+package com.szogi.costmanager.common.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 

@@ -1,10 +1,10 @@
 package com.szogi.costmanager.services.service;
 
 import com.google.common.collect.Lists;
-import com.szogi.costmanager.services.dao.CostDao;
-import com.szogi.costmanager.services.model.Cost;
-import com.szogi.costmanager.services.model.CostList;
-import com.szogi.costmanager.services.model.Tag;
+import com.szogi.costmanager.services.dao.CostObjectDao;
+import com.szogi.costmanager.services.model.CostObject;
+import com.szogi.costmanager.services.model.CostObjectList;
+import com.szogi.costmanager.services.model.TagObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -14,7 +14,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.annotation.Resource;
 import javax.ws.rs.core.Response;
-
 import java.math.BigDecimal;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
@@ -24,10 +23,10 @@ import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.verify;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CostServiceTest {
+public class CostObjectServiceTest {
 
     @Mock
-    CostDao mockedCostDao;
+    CostObjectDao mockedCostObjectDao;
 
     @InjectMocks
     @Resource
@@ -36,20 +35,20 @@ public class CostServiceTest {
 
     @Test
     public void save() {
-        Cost cost = new Cost.Builder()
+        CostObject costObject = new CostObject.Builder()
                 .setDescription(randomAlphabetic(15))
                 .setAmount(BigDecimal.ONE)
-                .addTag(new Tag(randomAlphabetic(10)))
+                .addTag(new TagObject(randomAlphabetic(10)))
                 .build();
-        Response response = target.saveCost(cost);
-        verify(mockedCostDao).save(cost);
+        Response response = target.saveCost(costObject);
+        verify(mockedCostObjectDao).save(costObject);
         assertThat(response, is(notNullValue()));
     }
 
     @Test
     public void loadAll() {
-        Mockito.when(mockedCostDao.findAll()).thenReturn(Lists.<Cost>newArrayList());
-        CostList costList = target.loadAll();
-        assertThat(costList, is(notNullValue()));
+        Mockito.when(mockedCostObjectDao.findAll()).thenReturn(Lists.<CostObject>newArrayList());
+        CostObjectList costObjectList = target.loadAll();
+        assertThat(costObjectList, is(notNullValue()));
     }
 }

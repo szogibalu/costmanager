@@ -1,8 +1,8 @@
 package com.szogi.costmanager.services.util;
 
 
-import com.szogi.costmanager.services.model.Cost;
-import com.szogi.costmanager.services.model.Tag;
+import com.szogi.costmanager.services.model.CostObject;
+import com.szogi.costmanager.services.model.TagObject;
 
 import java.math.BigDecimal;
 
@@ -13,19 +13,19 @@ public final class TestObjectFactory {
     private TestObjectFactory() {
     }
 
-    public static Cost testCost() {
+    public static CostObject testCost() {
         return testCost(testTag());
     }
 
-    public static Cost testCost(Tag tag) {
-        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.ONE).addTag(tag).build();
+    public static CostObject testCost(TagObject tagObject) {
+        return new CostObject.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.ONE).addTag(tagObject).build();
     }
 
-    public static Cost testCostWithoutAnyTag() {
-        return new Cost.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.TEN).build();
+    public static CostObject testCostWithoutAnyTag() {
+        return new CostObject.Builder().setDescription(randomAlphabetic(15)).setAmount(BigDecimal.TEN).build();
     }
 
-    public static Tag testTag() {
-        return new Tag(randomAlphabetic(10));
+    public static TagObject testTag() {
+        return new TagObject(randomAlphabetic(10));
     }
 }

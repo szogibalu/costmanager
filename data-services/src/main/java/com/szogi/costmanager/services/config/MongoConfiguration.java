@@ -3,8 +3,8 @@ package com.szogi.costmanager.services.config;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.szogi.costmanager.services.dao.CostDao;
-import com.szogi.costmanager.services.dao.TagDao;
+import com.szogi.costmanager.services.dao.CostObjectDao;
+import com.szogi.costmanager.services.dao.TagObjectDao;
 import com.szogi.costmanager.services.dao.listener.CostMongoEventListener;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -46,13 +46,13 @@ class MongoConfiguration extends AbstractMongoConfiguration {
     }
 
     @Bean
-    public CostDao costDao() throws Exception {
-        return new CostDao();
+    public CostObjectDao costObjectDao() throws Exception {
+        return new CostObjectDao();
     }
 
     @Bean
-    public TagDao tagDao() throws Exception {
-        return new TagDao();
+    public TagObjectDao tagObjectDao() throws Exception {
+        return new TagObjectDao();
     }
 
     @Bean
