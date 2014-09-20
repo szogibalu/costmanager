@@ -6,12 +6,12 @@ import java.util.List;
 
 public class CostList {
 
-    private List<com.szogi.costmanager.services.model.Cost> costs;
+    private List<Cost> costs;
 
     public CostList() {
     }
 
-    public CostList(List<com.szogi.costmanager.services.model.Cost> costs) {
+    public CostList(List<Cost> costs) {
         this.costs = costs;
     }
 
