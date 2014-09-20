@@ -13,7 +13,7 @@
 
     <context-param>
         <param-name>contextConfigLocation</param-name>
-        <param-value>com.szogi.costmanager.services.config.CostManagerServicesConfiguration</param-value>
+        <param-value>com.szogi.costmanager.services.config.CostManagerWebServicesConfiguration</param-value>
     </context-param>
 
     <listener>

@@ -5,5 +5,5 @@ import org.springframework.context.annotation.Import;
 
 @Configuration
 @Import(MongoConfiguration.class)
-class ServicesConfiguration {
+class WebServicesConfiguration {
 }

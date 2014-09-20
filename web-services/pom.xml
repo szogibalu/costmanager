@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.szogi.costmanager</groupId>
-    <artifactId>services</artifactId>
+    <artifactId>web-services</artifactId>
     <name>Cost Manager Rest Services</name>
     <packaging>war</packaging>
 
@@ -136,7 +136,7 @@
     </dependencies>
 
     <build>
-        <finalName>cost-manager-services</finalName>
+        <finalName>cost-manager-web-services</finalName>
         <plugins>
             <plugin>
                 <groupId>org.eclipse.jetty</groupId>
@@ -153,11 +153,10 @@
                     <stopKey>stop</stopKey>
                     <stopPort>9999</stopPort>
                     <useTestScope>true</useTestScope>
-                    <war>${basedir}/target/cost-manager-services.war</war>
+                    <war>${basedir}/target/cost-manager-web-services.war</war>
                     <webApp>
                         <contextPath>/cost-manager-services</contextPath>
                         <descriptor>${basedir}/target/test-classes/test-web.xml</descriptor>
-
                     </webApp>
                 </configuration>
                 <executions>

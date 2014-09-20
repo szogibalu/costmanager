@@ -13,7 +13,8 @@
 
     <modules>
         <module>core</module>
-        <module>services</module>
+        <module>data-services</module>
+        <module>web-services</module>
         <module>client</module>
     </modules>
 

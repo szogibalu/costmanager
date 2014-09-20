@@ -6,6 +6,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @PropertySource("file:${cm.config.dir}/services.properties")
-@Import(ServicesConfiguration.class)
-class CostManagerServicesConfiguration {
+@Import(WebServicesConfiguration.class)
+class CostManagerWebServicesConfiguration {
 }
