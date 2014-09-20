@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services;
+package com.szogi.costmanager;
 
 
 import com.szogi.costmanager.core.test.RestIntegrationTest;
@@ -18,7 +18,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
-public class CostObjectServiceExternalJettyIntegrationTest extends RestIntegrationTest {
+public class WebServicesIntegrationTest extends RestIntegrationTest {
 
     private static final String COST_SERVICE_URL = "/json/costservice";
 

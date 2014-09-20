@@ -17,6 +17,7 @@
         <module>data-services</module>
         <module>web-services</module>
         <module>client</module>
+        <module>integration-test</module>
     </modules>
 
     <properties>
@@ -220,23 +221,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>cloudbees-snapshot</id>
-            <url>https://repository-szogibalu.forge.cloudbees.com/snapshot/</url>
-        </repository>
-    </distributionManagement>
-
-    <repositories>
-        <repository>
-            <id>cloudbees-snapshot</id>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>always</updatePolicy>
-                <checksumPolicy>fail</checksumPolicy>
-            </snapshots>
-            <url>https://repository-szogibalu.forge.cloudbees.com/snapshot/</url>
-        </repository>
-    </repositories>
 </project>
