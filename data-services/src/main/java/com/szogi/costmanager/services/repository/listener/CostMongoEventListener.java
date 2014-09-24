@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.dao.listener;
+package com.szogi.costmanager.services.repository.listener;
 
 import com.szogi.costmanager.services.model.CostObject;
 import org.slf4j.Logger;

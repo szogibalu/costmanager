@@ -1,7 +1,6 @@
-package com.szogi.costmanager.core.dao.listener;
+package com.szogi.costmanager.core.mongo.listener;
 
-
-import com.szogi.costmanager.core.dao.EmbeddedMongoDbServer;
+import com.szogi.costmanager.core.mongo.EmbeddedMongoDbServer;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;

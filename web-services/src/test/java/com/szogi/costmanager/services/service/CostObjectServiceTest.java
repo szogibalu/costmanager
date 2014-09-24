@@ -1,7 +1,6 @@
 package com.szogi.costmanager.services.service;
 
 import com.google.common.collect.Lists;
-import com.szogi.costmanager.services.dao.CostObjectDao;
 import com.szogi.costmanager.services.model.CostObject;
 import com.szogi.costmanager.services.model.CostObjectList;
 import com.szogi.costmanager.services.model.TagObject;
@@ -26,7 +25,7 @@ import static org.mockito.Mockito.verify;
 public class CostObjectServiceTest {
 
     @Mock
-    CostObjectDao mockedCostObjectDao;
+    CostObjectService mockedCostObjectService;
 
     @InjectMocks
     @Resource
@@ -41,13 +40,13 @@ public class CostObjectServiceTest {
                 .addTag(new TagObject(randomAlphabetic(10)))
                 .build();
         Response response = target.saveCost(costObject);
-        verify(mockedCostObjectDao).save(costObject);
+        verify(mockedCostObjectService).save(costObject);
         assertThat(response, is(notNullValue()));
     }
 
     @Test
     public void loadAll() {
-        Mockito.when(mockedCostObjectDao.findAll()).thenReturn(Lists.<CostObject>newArrayList());
+        Mockito.when(mockedCostObjectService.findAll()).thenReturn(Lists.<CostObject>newArrayList());
         CostObjectList costObjectList = target.loadAll();
         assertThat(costObjectList, is(notNullValue()));
     }

@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.test;
+package com.szogi.costmanager.core.rest;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.http.HttpResponse;

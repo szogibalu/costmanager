@@ -1,10 +1,12 @@
-package com.szogi.costmanager.services.dao;
+package com.szogi.costmanager.services.repository;
 
 
-import com.szogi.costmanager.core.dao.EmbeddedMongoDbServer;
+import com.szogi.costmanager.core.mongo.EmbeddedMongoDbServer;
+import com.szogi.costmanager.core.mongo.MongoDbHelper;
 import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
 import com.szogi.costmanager.services.model.CostObject;
 import com.szogi.costmanager.services.model.TagObject;
+import com.szogi.costmanager.services.service.CostObjectService;
 import com.szogi.costmanager.services.util.TestObjectFactory;
 import org.junit.*;
 import org.junit.runner.RunWith;
@@ -12,21 +14,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import static com.szogi.costmanager.core.mongo.MongoDbHelper.CreateOption.DROP_EXISTING;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.assertThat;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = {CostManagerServicesTestConfiguration.class})
-public class CostObjectDaoIntegrationTest {
+public class CostObjectServiceIntegrationTest {
 
     @Autowired
-    private CostObjectDao costObjectDao;
-
-    @Autowired
-    private TagObjectDao tagObjectDao;
+    private CostObjectService costObjectService;
 
     @Autowired
     private TagObjectRepository tagObjectRepository;
+
+    @Autowired
+    private MongoDbHelper mongoDbHelper;
 
     @BeforeClass
     public static void init() throws Exception {
@@ -40,8 +43,8 @@ public class CostObjectDaoIntegrationTest {
 
     @Test
     public void saveWithNewTag() {
-        CostObject savedCostObject = costObjectDao.save(TestObjectFactory.testCost());
-        CostObject loadedCostObject = costObjectDao.findOne(savedCostObject.getId());
+        CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCost());
+        CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
         assertThat(loadedCostObject.getTagObjects(), is(not(empty())));
     }
@@ -49,16 +52,16 @@ public class CostObjectDaoIntegrationTest {
     @Test
     public void saveWithExistingTag() {
         TagObject savedTagObject = tagObjectRepository.save(TestObjectFactory.testTag());
-        CostObject savedCostObject = costObjectDao.save(TestObjectFactory.testCost(savedTagObject));
-        CostObject loadedCostObject = costObjectDao.findOne(savedCostObject.getId());
+        CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCost(savedTagObject));
+        CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
         assertThat(loadedCostObject.getTagObjects(), is(not(empty())));
     }
 
     @Test
     public void saveWithoutAnyTag() {
-        CostObject savedCostObject = costObjectDao.save(TestObjectFactory.testCostWithoutAnyTag());
-        CostObject loadedCostObject = costObjectDao.findOne(savedCostObject.getId());
+        CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCostWithoutAnyTag());
+        CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
         assertThat(loadedCostObject.getTagObjects(), is((empty())));
     }
@@ -67,20 +70,20 @@ public class CostObjectDaoIntegrationTest {
     public void findAll() {
         int costNumber = 5;
         for (int i = 0; i < costNumber; i++) {
-            costObjectDao.save(TestObjectFactory.testCost());
+            costObjectService.save(TestObjectFactory.testCost());
         }
-        assertThat(costObjectDao.findAll().size(), is(costNumber));
+        assertThat(costObjectService.findAll().size(), is(costNumber));
     }
 
     @Before
     public void setUp() throws Exception {
-        tagObjectDao.createCollection(true);
-        costObjectDao.createCollection(true);
+        mongoDbHelper.createCollection(TagObject.class, DROP_EXISTING);
+        mongoDbHelper.createCollection(CostObject.class, DROP_EXISTING);
     }
 
     @After
     public void clear() throws Exception {
-        costObjectDao.dropCollection();
-        tagObjectDao.dropCollection();
+        mongoDbHelper.dropCollection(CostObject.class);
+        mongoDbHelper.dropCollection(TagObject.class);
     }
 }

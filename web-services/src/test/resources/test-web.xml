@@ -17,7 +17,7 @@
     </context-param>
 
     <listener>
-        <listener-class>com.szogi.costmanager.core.dao.listener.EmbeddedMongoDbServerContextListener</listener-class>
+        <listener-class>com.szogi.costmanager.core.mongo.listener.EmbeddedMongoDbServerContextListener</listener-class>
     </listener>
 
     <listener>

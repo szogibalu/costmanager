@@ -1,4 +1,4 @@
-package com.szogi.costmanager.core.dao;
+package com.szogi.costmanager.core.mongo;
 
 
 import com.mongodb.DB;

@@ -1,7 +1,7 @@
 package com.szogi.costmanager;
 
 
-import com.szogi.costmanager.core.test.RestIntegrationTest;
+import com.szogi.costmanager.core.rest.RestIntegrationTest;
 import com.szogi.costmanager.services.model.CostObject;
 import com.szogi.costmanager.services.model.CostObjectList;
 import com.szogi.costmanager.services.model.TagObject;

@@ -1,8 +1,9 @@
-package com.szogi.costmanager.services.dao;
+package com.szogi.costmanager.services.service;
 
-import com.szogi.costmanager.core.dao.AbstractMongoDbDao;
 import com.szogi.costmanager.services.model.CostObject;
 import com.szogi.costmanager.services.model.TagObject;
+import com.szogi.costmanager.services.repository.CostObjectRepository;
+import com.szogi.costmanager.services.repository.TagObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -10,19 +11,13 @@ import java.util.List;
 import static com.google.common.base.Preconditions.checkNotNull;
 import static org.apache.commons.collections.CollectionUtils.isNotEmpty;
 
-
-public class CostObjectDao extends AbstractMongoDbDao {
+public class CostObjectService {
 
     @Autowired
     private CostObjectRepository costObjectRepository;
 
     @Autowired
     private TagObjectRepository tagObjectRepository;
-
-    @Override
-    public Class<?> getCollection() {
-        return CostObject.class;
-    }
 
     public CostObject save(CostObject costObject) {
         checkNotNull(costObject);

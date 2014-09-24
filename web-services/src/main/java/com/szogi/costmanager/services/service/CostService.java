@@ -1,7 +1,6 @@
 package com.szogi.costmanager.services.service;
 
 
-import com.szogi.costmanager.services.dao.CostObjectDao;
 import com.szogi.costmanager.services.model.CostObject;
 import com.szogi.costmanager.services.model.CostObjectList;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,14 +13,14 @@ import javax.ws.rs.core.Response;
 public class CostService {
 
     @Autowired
-    private CostObjectDao costObjectDao;
+    private CostObjectService costObjectService;
 
     @POST
     @Path("/save")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response saveCost(final CostObject costObject) {
-        costObjectDao.save(costObject);
+        costObjectService.save(costObject);
         return Response.status(201).entity("Cost saved: " + costObject.getDescription()).build();
     }
 
@@ -29,6 +28,6 @@ public class CostService {
     @Path("/loadAll")
     @Produces(MediaType.APPLICATION_JSON)
     public CostObjectList loadAll() {
-        return new CostObjectList(costObjectDao.findAll());
+        return new CostObjectList(costObjectService.findAll());
     }
 }

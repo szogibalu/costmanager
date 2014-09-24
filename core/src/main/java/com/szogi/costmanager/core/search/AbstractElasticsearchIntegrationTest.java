@@ -1,6 +1,5 @@
-package com.szogi.costmanager.core.test;
+package com.szogi.costmanager.core.search;
 
-import com.szogi.costmanager.core.search.EmbeddedElasticsearchServer;
 import org.elasticsearch.client.Client;
 import org.junit.After;
 import org.junit.Before;
