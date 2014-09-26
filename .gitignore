@@ -78,6 +78,10 @@ local.properties
 # TeXlipse plugin
 .texlipse
 
+### Cloud9 ###
+# Cloud9 IDE - http://c9.io
+.c9revisions
+.c9
 
 ### Java ###
 *.class
