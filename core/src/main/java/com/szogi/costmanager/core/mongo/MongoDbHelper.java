@@ -45,6 +45,6 @@ public class MongoDbHelper {
     }
 
     public enum CreateOption {
-        DROP_EXISTING, KEEP_EXISTING;
+        DROP_EXISTING, KEEP_EXISTING
     }
 }

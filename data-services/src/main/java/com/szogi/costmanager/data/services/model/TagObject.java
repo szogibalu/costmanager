@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.model;
+package com.szogi.costmanager.data.services.model;
 
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.Objects;
+
 
 @Document(collection = "tags")
 @TypeAlias("tag")

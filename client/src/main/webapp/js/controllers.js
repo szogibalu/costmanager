@@ -4,8 +4,8 @@
     app.controller('CostController', ['$http', function($http){
            var controller = this;
            controller.costs = [];
-           $http.get('/cost-manager-services/rest/json/costservice/loadAll').success(function(data){
-               controller.costs = data.costs;
+           $http.get('/cost-manager-web-services/rest/json/costservice/loadAll').success(function(data){
+               controller.costs = data.costObjects;
            });
          }]);
 

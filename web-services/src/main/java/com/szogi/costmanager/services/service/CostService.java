@@ -1,8 +1,8 @@
 package com.szogi.costmanager.services.service;
 
-
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.CostObjectList;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.CostObjectList;
+import com.szogi.costmanager.data.services.service.CostObjectService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.ws.rs.*;

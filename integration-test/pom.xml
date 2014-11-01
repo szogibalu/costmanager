@@ -11,7 +11,7 @@
 
     <groupId>com.szogi.costmanager</groupId>
     <artifactId>integration-test</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <name>Integration for Cost Manager</name>
 
     <properties>
@@ -160,7 +160,7 @@
                     <war>${web.services.root}/cost-manager-web-services.war</war>
                     <classesDirectory>${web.services.root}/classes</classesDirectory>
                     <webApp>
-                        <contextPath>/cost-manager-services</contextPath>
+                        <contextPath>/cost-manager-web-services</contextPath>
                         <descriptor>${web.services.root}/test-classes/test-web.xml</descriptor>
                     </webApp>
                 </configuration>
@@ -191,7 +191,7 @@
                 <version>2.17</version>
                 <configuration>
                     <excludes>
-                        <exclude>**/*ExternalJettyIntegrationTest.java</exclude>
+                        <exclude>**/*IntegrationTest.java</exclude>
                     </excludes>
                 </configuration>
                 <executions>
@@ -206,7 +206,7 @@
                                 <exclude>none</exclude>
                             </excludes>
                             <includes>
-                                <include>**/*ExternalJettyIntegrationTest.java</include>
+                                <include>**/*IntegrationTest.java</include>
                             </includes>
                         </configuration>
                     </execution>

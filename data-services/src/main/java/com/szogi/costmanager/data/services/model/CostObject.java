@@ -1,4 +1,4 @@
-package com.szogi.costmanager.services.model;
+package com.szogi.costmanager.data.services.model;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.springframework.data.annotation.Id;
@@ -31,7 +31,7 @@ public class CostObject implements Serializable {
     private String currency;
 
     @DBRef
-    private List<TagObject> tagObjects;
+    private List<TagObject> tags;
 
     public CostObject() {
     }
@@ -76,12 +76,12 @@ public class CostObject implements Serializable {
         this.currency = currency;
     }
 
-    public List<TagObject> getTagObjects() {
-        return tagObjects;
+    public List<TagObject> getTags() {
+        return tags;
     }
 
-    public void setTagObjects(List<TagObject> tagObjects) {
-        this.tagObjects = tagObjects;
+    public void setTags(List<TagObject> tags) {
+        this.tags = tags;
     }
 
     @Override
@@ -153,7 +153,7 @@ public class CostObject implements Serializable {
             costObject.setAmount(amount);
             costObject.setCurrency(currency);
             costObject.setDate(date);
-            costObject.setTagObjects(tagObjects);
+            costObject.setTags(tagObjects);
             return costObject;
         }
     }

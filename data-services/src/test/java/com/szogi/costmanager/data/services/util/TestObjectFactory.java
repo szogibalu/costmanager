@@ -1,8 +1,8 @@
-package com.szogi.costmanager.services.util;
+package com.szogi.costmanager.data.services.util;
 
 
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.TagObject;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.TagObject;
 
 import java.math.BigDecimal;
 

@@ -1,9 +1,10 @@
 package com.szogi.costmanager.services.service;
 
 import com.google.common.collect.Lists;
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.CostObjectList;
-import com.szogi.costmanager.services.model.TagObject;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.CostObjectList;
+import com.szogi.costmanager.data.services.model.TagObject;
+import com.szogi.costmanager.data.services.service.CostObjectService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

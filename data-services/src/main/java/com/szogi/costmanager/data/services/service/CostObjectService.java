@@ -1,9 +1,9 @@
-package com.szogi.costmanager.services.service;
+package com.szogi.costmanager.data.services.service;
 
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.TagObject;
-import com.szogi.costmanager.services.repository.CostObjectRepository;
-import com.szogi.costmanager.services.repository.TagObjectRepository;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.TagObject;
+import com.szogi.costmanager.data.services.repository.CostObjectRepository;
+import com.szogi.costmanager.data.services.repository.TagObjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -21,8 +21,8 @@ public class CostObjectService {
 
     public CostObject save(CostObject costObject) {
         checkNotNull(costObject);
-        if (isNotEmpty(costObject.getTagObjects())) {
-            for (TagObject tagObject : costObject.getTagObjects()) {
+        if (isNotEmpty(costObject.getTags())) {
+            for (TagObject tagObject : costObject.getTags()) {
                 if (tagObject.getId() == null) {
                     TagObject savedTagObject = tagObjectRepository.save(tagObject);
                     tagObject.setId(savedTagObject.getId());

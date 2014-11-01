@@ -1,10 +1,9 @@
 package com.szogi.costmanager;
 
-
 import com.szogi.costmanager.core.rest.RestIntegrationTest;
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.CostObjectList;
-import com.szogi.costmanager.services.model.TagObject;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.CostObjectList;
+import com.szogi.costmanager.data.services.model.TagObject;
 import org.apache.http.HttpResponse;
 import org.junit.Test;
 
@@ -55,6 +54,6 @@ public class WebServicesIntegrationTest extends RestIntegrationTest {
 
     @Override
     protected String getRestServiceUrl() {
-        return "http://localhost:8080/cost-manager-services/rest";
+        return "http://localhost:8080/cost-manager-web-services/rest";
     }
 }

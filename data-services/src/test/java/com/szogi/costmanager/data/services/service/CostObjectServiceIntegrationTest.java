@@ -1,13 +1,13 @@
-package com.szogi.costmanager.services.repository;
+package com.szogi.costmanager.data.services.service;
 
 
 import com.szogi.costmanager.core.mongo.EmbeddedMongoDbServer;
 import com.szogi.costmanager.core.mongo.MongoDbHelper;
-import com.szogi.costmanager.services.config.CostManagerServicesTestConfiguration;
-import com.szogi.costmanager.services.model.CostObject;
-import com.szogi.costmanager.services.model.TagObject;
-import com.szogi.costmanager.services.service.CostObjectService;
-import com.szogi.costmanager.services.util.TestObjectFactory;
+import com.szogi.costmanager.data.services.config.CostManagerServicesTestConfiguration;
+import com.szogi.costmanager.data.services.model.CostObject;
+import com.szogi.costmanager.data.services.model.TagObject;
+import com.szogi.costmanager.data.services.repository.TagObjectRepository;
+import com.szogi.costmanager.data.services.util.TestObjectFactory;
 import org.junit.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +46,7 @@ public class CostObjectServiceIntegrationTest {
         CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCost());
         CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
-        assertThat(loadedCostObject.getTagObjects(), is(not(empty())));
+        assertThat(loadedCostObject.getTags(), is(not(empty())));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class CostObjectServiceIntegrationTest {
         CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCost(savedTagObject));
         CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
-        assertThat(loadedCostObject.getTagObjects(), is(not(empty())));
+        assertThat(loadedCostObject.getTags(), is(not(empty())));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class CostObjectServiceIntegrationTest {
         CostObject savedCostObject = costObjectService.save(TestObjectFactory.testCostWithoutAnyTag());
         CostObject loadedCostObject = costObjectService.findOne(savedCostObject.getId());
         assertThat(loadedCostObject, is(notNullValue()));
-        assertThat(loadedCostObject.getTagObjects(), is((empty())));
+        assertThat(loadedCostObject.getTags(), is((empty())));
     }
 
     @Test

@@ -1,10 +1,10 @@
-package com.szogi.costmanager.services.config;
+package com.szogi.costmanager.data.services.config;
 
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;
-import com.szogi.costmanager.services.repository.listener.CostMongoEventListener;
-import com.szogi.costmanager.services.service.CostObjectService;
+import com.szogi.costmanager.data.services.repository.listener.CostMongoEventListener;
+import com.szogi.costmanager.data.services.service.CostObjectService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,8 +16,8 @@ import org.springframework.data.mongodb.config.AbstractMongoConfiguration;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.szogi.costmanager.services.repository")
-class MongoConfiguration extends AbstractMongoConfiguration {
+@EnableMongoRepositories(basePackages = "com.szogi.costmanager.data.services.repository")
+public class MongoConfiguration extends AbstractMongoConfiguration {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MongoConfiguration.class);
 
@@ -26,22 +26,22 @@ class MongoConfiguration extends AbstractMongoConfiguration {
 
     @Override
     public String getDatabaseName() {
-        String dbName = environment.getRequiredProperty("db.name");
+        String dbName = environment.getRequiredProperty("mongo.db.name");
         LOGGER.info("Mongo database Name: {}", dbName);
         return dbName;
     }
 
     @Override
     public Mongo mongo() throws Exception {
-        String dbHost = environment.getRequiredProperty("db.host");
-        Integer dbPort = environment.getRequiredProperty("db.port", Integer.class);
+        String dbHost = environment.getRequiredProperty("mongo.db.host");
+        Integer dbPort = environment.getRequiredProperty("mongo.db.port", Integer.class);
         LOGGER.info("Create MongoClient for: {}:{}", dbHost, dbPort);
         return new MongoClient(dbHost, dbPort);
     }
 
     @Override
     public UserCredentials getUserCredentials() {
-        return new UserCredentials(environment.getRequiredProperty("db.user"), environment.getRequiredProperty("db.password"));
+        return new UserCredentials(environment.getRequiredProperty("mongo.db.user"), environment.getRequiredProperty("mongo.db.password"));
     }
 
     @Bean
